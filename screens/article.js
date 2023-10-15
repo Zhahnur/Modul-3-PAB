@@ -1,9 +1,12 @@
-import { ScrollView, Image, View, Text, StyleSheet, Alert } from "react-native";
-import Separator from "../components/separator";
-import Button from "../components/button";
+import React, { useState } from 'react';
+import { ScrollView, Image, View, Text, StyleSheet, Alert } from 'react-native';
+import Separator from '../components/separator';
+import Button from '../components/button';
+import Modal from '../components/modal';
 
 // Functional Component
 const Article = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   // Arrow Function
   const buttonHandler = () => {
     Alert.alert("Button Handler");
@@ -96,8 +99,10 @@ const Article = () => {
         <Separator height={10} />
         <Text style={{ fontWeight: "bold" }}>OCTOBER 12, 2023 </Text>
         <Separator height={10} />
-        <View style={{ backgroundColor: "gray", height: 1 }} />
+        <View style={{ backgroundColor: "gray", height: 1 }} />  
         <Separator height={20} />
+        <Button text="Klik Aku" onPress={() => setModalVisible(true)} />
+      <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)} />
         <Button text="Share" onPress={buttonHandler} />
         <Separator height={70} />
       </View>
